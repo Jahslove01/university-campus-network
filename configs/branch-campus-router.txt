@@ -1,0 +1,28 @@
+! BRANCH CAMPUS ROUTER (Cisco 2911)
+! Reconstructed from CLI screenshots (08, 09). Partial: lines not visible
+! in the screenshots are not included. Replace with a full `show running-config`.
+!
+interface GigabitEthernet0/0.90
+ ! H&S Staff
+ encapsulation dot1Q 90
+ ip address 192.168.9.1 255.255.255.0
+!
+interface GigabitEthernet0/0.100
+ ! H&S Student Labs
+ encapsulation dot1Q 100
+ ip address 192.168.10.1 255.255.255.0
+!
+service dhcp
+!
+ip dhcp pool Staff-pool
+ network 192.168.9.0 255.255.255.0
+ default-router 192.168.9.1
+ dns-server 192.168.9.1
+!
+ip dhcp pool Studlb-pool
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+ dns-server 192.168.10.1
+!
+! Serial link to the main campus router: 10.10.10.2/30 (confirmed by ping test, screenshot 16).
+! RIPv2 configuration: not captured in a screenshot.

@@ -1,0 +1,22 @@
+! MAIN CAMPUS L3 SWITCH (Cisco 3650-24PS)
+! Reconstructed from CLI screenshots (03, 04). Partial.
+! Note: no `ip routing` or SVIs, so this switch works at Layer 2 here;
+! inter-VLAN routing happens on the main campus router.
+!
+interface GigabitEthernet1/0/1
+ ! Trunk to main campus router
+ switchport mode trunk
+! ("switchport trunk encapsulation dot1q" is not available on the 3650: it only supports 802.1Q)
+!
+interface GigabitEthernet1/0/2
+ ! Downlink to Admin switch
+ switchport mode access
+ switchport access vlan 10
+!
+interface GigabitEthernet1/0/3
+ ! Downlink to HR switch
+ switchport mode access
+ switchport access vlan 20
+!
+! Gi1/0/4 - Gi1/0/9: downlinks to Finance (30), Business (40), E&C (50),
+! A&D (60), Student Labs (70) and IT (80), configured the same way.

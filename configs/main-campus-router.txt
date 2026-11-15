@@ -1,0 +1,58 @@
+! MAIN-CAMPUS ROUTER (Cisco 2911)
+! Reconstructed from CLI screenshots (05, 06, 07). Partial: lines not visible
+! in the screenshots are not included. Replace with a full `show running-config`.
+!
+interface Serial0/1/1
+ ! Link to branch campus router
+ ip address 10.10.10.1 255.255.255.252
+!
+interface Serial0/1/0
+ ! Link to cloud router
+ ip address 10.10.10.5 255.255.255.252
+!
+! Subinterfaces for VLANs 10-80 (gateways 192.168.1.1 - 192.168.8.1):
+! configured, but not captured in a screenshot.
+!
+ip dhcp pool admin-pool
+ network 192.168.1.0 255.255.255.0
+ default-router 192.168.1.1
+ dns-server 192.168.1.1
+!
+ip dhcp pool HR-pool
+ network 192.168.2.0 255.255.255.0
+ default-router 192.168.2.1
+ dns-server 192.168.2.1
+!
+ip dhcp pool Finance-pool
+ network 192.168.3.0 255.255.255.0
+ default-router 192.168.3.1
+ dns-server 192.168.3.1
+!
+ip dhcp pool Business-pool
+ network 192.168.4.0 255.255.255.0
+ default-router 192.168.4.1
+ dns-server 192.168.4.1
+!
+ip dhcp pool EC-pool
+ network 192.168.5.0 255.255.255.0
+ default-router 192.168.5.1
+ dns-server 192.168.5.1
+!
+ip dhcp pool AD-pool
+ network 192.168.6.0 255.255.255.0
+ default-router 192.168.6.1
+! (remaining pools for VLANs 70 and 80 not captured)
+!
+router rip
+ version 2
+ network 10.10.10.0
+ network 10.10.10.4
+ network 192.168.1.0
+ network 192.168.2.0
+ network 192.168.3.0
+ network 192.168.4.0
+ network 192.168.5.0
+ network 192.168.6.0
+ network 192.168.7.0
+ network 192.168.8.0
+! Note: IOS stores the two 10.10.10.x statements as one classful "network 10.0.0.0".

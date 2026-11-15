@@ -166,4 +166,4 @@ In several tests the first ping timed out and the rest succeeded. That first pac
 ## Files
 
 - `screenshots/` topology, configuration and test screenshots
-- `configs/` running configurations (see the note there)
+- `configs/` configurations reconstructed from the CLI screenshots (see the note there)

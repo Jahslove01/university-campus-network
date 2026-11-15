@@ -1,9 +1,21 @@
 # Configs
 
-Add one text file per device, exported from Packet Tracer with `show running-config`:
+These files are **reconstructed from the CLI screenshots** in `../screenshots/`. They contain only what the screenshots show, so some parts are missing (noted inside each file).
 
-- `main-campus-router.txt`, `branch-campus-router.txt`, `cloud-router.txt`
-- `main-campus-l3-switch.txt`, `branch-l3-switch.txt`
-- Access switches: `admin.txt`, `hr.txt`, `finance.txt`, `business.txt`, `e-and-c.txt`, `a-and-d.txt`, `stud-lab.txt`, `it.txt`, `branch-staff.txt`, `branch-stud-lab.txt`
+| File | Device | From screenshots |
+| --- | --- | --- |
+| `main-campus-router.txt` | Main campus router (2911) | 05, 06, 07 |
+| `branch-campus-router.txt` | Branch campus router (2911) | 08, 09 |
+| `main-campus-l3-switch.txt` | Main campus 3650 | 03, 04 |
+| `admin-switch.txt` | Admin access switch (2960) | 02 |
+| `email-server.txt` | External email server | 10, 11 |
+
+## To complete this folder
+
+Export each device's full configuration from Packet Tracer with `show running-config` and save it here, replacing the reconstructed file:
+
+- Routers: main campus, branch campus, cloud
+- Multilayer switches: main campus, branch campus
+- Access switches: Admin, HR, Finance, Business, E&C, A&D, Student Labs, IT, branch Staff, branch Student Labs
 
 Before committing, replace any passwords with `<removed>`.
